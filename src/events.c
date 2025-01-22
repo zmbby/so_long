@@ -16,16 +16,19 @@ void update_position(t_data *data) {
 int render_next_frame(void *param) {
     t_data *data = (t_data *)param;
     data->loop_counter++;
-    /*printf("Rendering frame %d\n", data->loop_counter); // Debug statement*/
 
     if (data->loop_counter % 3000 == 0) { // Adjust modulo for smoother animation
         update_position(data);
-        mlx_clear_window(data->mlx, data->win); // Clear the window
+        put_img_to_img(data->base_img, data->wall_img, 0, 0); // Copy the background to the base image
         draw_map(data); // Redraw the walls
-        data->loop_counter = 0;
-        void **frames = (data->state == 0) ? data->idle_frames[data->direction] : data->running_frames[data->direction]; //hadi khasha tbadel l if o else .............................
-        mlx_put_image_to_window(data->mlx, data->win, frames[data->current_frame], data->x, data->y);
+
+        void **frames = (data->state == 0) ? (void **)data->idle_frames[data->direction] : (void **)data->running_frames[data->direction];
+        put_img_to_img(data->base_img, *((t_img *)frames[data->current_frame]), data->x, data->y); // Copy the character frame to the base image
+
+        mlx_put_image_to_window(data->mlx, data->win, data->base_img.img_ptr, 0, 0); // Display the base image
+
         data->current_frame = (data->current_frame + 1) % 8;
+        data->loop_counter = 0;
     }
     return (0);
 }
@@ -57,8 +60,6 @@ int handle_key_release(int keycode, t_data *data) {
 }
 
 int handle_exit(t_data *data) {
-    //for (int i = 0;  i > )
-    //mlx_destroy_image(void *mlx_ptr, void *img_ptr)
     mlx_destroy_window(data->mlx, data->win);
     exit(0);
 }

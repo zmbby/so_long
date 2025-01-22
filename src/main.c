@@ -5,12 +5,6 @@ int main(int ac, char **av) {
         printf("Usage: %s <map_file>\n", av[0]);
         return (1);
     }
-    /*char *map1 = av[1]; // The map file is the first argument*/
-    /*int check = check_map(map1);*/
-    /*if (!check) {*/
-    /*    printf("Invalid map file.\n");*/
-    /*    return (1);*/
-    /*}*/
 
     t_data data;
     data.map = read_map(av[1]);
@@ -79,21 +73,23 @@ int main(int ac, char **av) {
     if (!data.win)
         return (printf("Failed to create window\n"), 1);
 
+    data.base_img.img_ptr = mlx_new_image(data.mlx, data.win_width, data.win_height);
+    data.base_img.addr = mlx_get_data_addr(data.base_img.img_ptr, &data.base_img.bpp, &data.base_img.line_len, &data.base_img.endian);
+    data.base_img.w = data.win_width;
+    data.base_img.h = data.win_height;
+
     for (int dir = 0; dir < 4; dir++) {
         for (int i = 0; i < 8; i++) {
-            data.idle_frames[dir][i] = mlx_xpm_file_to_image(data.mlx, idle_paths[dir][i], &width, &height);
-            if (!data.idle_frames[dir][i])
+            data.idle_frames[dir][i] = load_image(data.mlx, idle_paths[dir][i]);
+            if (!data.idle_frames[dir][i].img_ptr)
                 return (printf("Failed to load idle image: %s\n", idle_paths[dir][i]), 1);
 
-            data.running_frames[dir][i] = mlx_xpm_file_to_image(data.mlx, running_paths[dir][i], &width, &height);
-            if (!data.running_frames[dir][i])
+            data.running_frames[dir][i] = load_image(data.mlx, running_paths[dir][i]);
+            if (!data.running_frames[dir][i].img_ptr)
                 return (printf("Failed to load running image: %s\n", running_paths[dir][i]), 1);
         }
     }
 
-    /*data = (t_data){0}; // had zebi howa seg fault salina hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-    data.x = 64;
-    data.y = 64;*/
     data.current_frame = 0;
     data.loop_counter = 0;
     data.direction = 0; // Start facing down
@@ -101,20 +97,6 @@ int main(int ac, char **av) {
     data.x = 64;
     data.y = 64;
     data.wall_img = load_image(data.mlx, "wall_floor/wall.xpm"); // Load the wall image
-    
-    // Read the map
-
-    // Draw the map
-    /*mlx_clear_window(data.mlx, data.win);*/
-    /*draw_map(&data, map);*/
-
-    // Free the map
-    /*for (int i = 0; data.map[i]; i++)*/
-    /*    free(data.map[i]);*/
-    /*free(data.map);*/
-
-    // Set up the rendering loop
-    
 
     // Set up event hooks
     mlx_hook(data.win, KeyPress, KeyPressMask, handle_key_press, &data);
