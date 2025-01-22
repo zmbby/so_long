@@ -17,7 +17,6 @@ int main(int ac, char **av) {
     data.win_width = map_width * 50; // Each tile is 50x50 pixels
     data.win_height = map_height * 50;
 
-    int width, height;
 
     // Paths for idle and running frames
     char *idle_paths[4][8] = {
