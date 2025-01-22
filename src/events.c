@@ -14,15 +14,33 @@ void update_position(t_data *data) {
 }
 
 int render_next_frame(void *param) {
+    if (param == NULL) {
+        printf("render_next_frame: param is NULL\n");
+        return (1);
+    }
     t_data *data = (t_data *)param;
     data->loop_counter++;
 
     if (data->loop_counter % 3000 == 0) { // Adjust modulo for smoother animation
         update_position(data);
+
+        if (data->base_img.img_ptr == NULL) {
+            printf("render_next_frame: base_img.img_ptr is NULL\n");
+            return (1);
+        }
         put_img_to_img(data->base_img, data->wall_img, 0, 0); // Copy the background to the base image
         draw_map(data); // Redraw the walls
 
+        if (data->state < 0 || data->state > 1 || data->direction < 0 || data->direction > 3) {
+            printf("render_next_frame: invalid state or direction\n");
+            return (1);
+        }
+
         void **frames = (data->state == 0) ? (void **)data->idle_frames[data->direction] : (void **)data->running_frames[data->direction];
+        if (frames == NULL || frames[data->current_frame] == NULL) {
+            printf("render_next_frame: frames or frames[current_frame] is NULL\n");
+            return (1);
+        }
         put_img_to_img(data->base_img, *((t_img *)frames[data->current_frame]), data->x, data->y); // Copy the character frame to the base image
 
         mlx_put_image_to_window(data->mlx, data->win, data->base_img.img_ptr, 0, 0); // Display the base image
