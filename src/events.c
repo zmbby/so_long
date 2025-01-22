@@ -12,7 +12,6 @@ void update_position(t_data *data) {
     if (data->direction == 3 && data->y - SPEED > 0)
         data->y -= SPEED;
 }
-
 int render_next_frame(void *param) {
     if (param == NULL) {
         printf("render_next_frame: param is NULL\n");
