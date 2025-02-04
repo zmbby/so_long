@@ -29,6 +29,7 @@ void put_img_to_img(t_img dst, t_img src, int x, int y) {
 t_img load_image(void *mlx, char *path) {
     t_img img;
     img.img_ptr = mlx_xpm_file_to_image(mlx, path, &img.w, &img.h);
+	printf("a");
     if (!img.img_ptr) {
         printf("Failed to load image: %s\n", path);
         exit(1);

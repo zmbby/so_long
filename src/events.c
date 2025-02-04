@@ -28,7 +28,7 @@ int render_next_frame(void *param) {
             return (1);
         }
         put_img_to_img(data->base_img, data->wall_img, 0, 0); // Copy the background to the base image
-        draw_map(data); // Redraw the walls
+        //draw_map(data); // Redraw the walls
 
         if (data->state < 0 || data->state > 1 || data->direction < 0 || data->direction > 3) {
             printf("render_next_frame: invalid state or direction\n");
@@ -40,7 +40,8 @@ int render_next_frame(void *param) {
             printf("render_next_frame: frames or frames[current_frame] is NULL\n");
             return (1);
         }
-        put_img_to_img(data->base_img, *((t_img *)frames[data->current_frame]), data->x, data->y); // Copy the character frame to the base image
+		t_img img = load_image(data->mlx, data->idle_frames[data->direction][data->current_frame]);
+        put_img_to_img(data->base_img, img, img.w, img.y); // Copy the character frame to the base image
 
         mlx_put_image_to_window(data->mlx, data->win, data->base_img.img_ptr, 0, 0); // Display the base image
 

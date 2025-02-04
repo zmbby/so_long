@@ -5,8 +5,8 @@ int main(int ac, char **av) {
         printf("Usage: %s <map_file>\n", av[0]);
         return (1);
     }
-
-    t_data data;
+	
+    /*t_data data;
     data.map = read_map(av[1]);
     if (!data.map)
         exit(1);
@@ -95,15 +95,16 @@ int main(int ac, char **av) {
     data.state = 0; // Start in idle state
     data.x = 64;
     data.y = 64;
+	printf("%s\n", ":");
     data.wall_img = load_image(data.mlx, "wall_floor/wall.xpm"); // Load the wall image
-
+	printf("%s\n", ":");
     // Set up event hooks
     mlx_hook(data.win, KeyPress, KeyPressMask, handle_key_press, &data);
     mlx_hook(data.win, KeyRelease, KeyReleaseMask, handle_key_release, &data);
     mlx_hook(data.win, DestroyNotify, NoEventMask, handle_exit, &data); // Window close
     mlx_loop_hook(data.mlx, render_next_frame, &data);
     // Start the MiniLibX loop
-    mlx_loop(data.mlx);
+    mlx_loop(data.mlx);*/
 
     return (0);
 }
