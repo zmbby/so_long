@@ -47,8 +47,23 @@ void    setup_tile(t_tile **tilemap, int x, int y)
     tilemap[y][x].position.y = y * IMG_SIZE;
     if (y != 0)
         tilemap[y][x].up = &tilemap[y - 1][x];
-    if (tilemap[y + 1][x])
+    if (tilemap[y + 1] != NULL)
+        tilemap[y][x].down = &tilemap[y + 1][x];
+    if (x != 0)
+        tilemap[y][x].left = &tilemap[y][x - 1];
+    tilemap[y][x]. right = &tilemap[y][x + 1];
 
+}
+
+
+void    set_gamevars(t_tile *tile, t_game *game, char c)
+{
+    if (tile->type == PLAYER)
+        game->player.tile = tile;
+    else if (tile->type == COIN)
+        game->collects++;
+    else if (tile->type == ENEMY || tile->type == FOLLOWER)
+        add_enemy(game, c, tile);
 }
 
 t_tile  **generate_tilemap(char **map, t_game *game)
@@ -59,7 +74,7 @@ t_tile  **generate_tilemap(char **map, t_game *game)
 
     tilemap = alloc_tilemap(map);
     if (!tilemap)
-        return (error("malloc faild ! ps : alloc_tilemap() !"));
+        return (null_error("malloc faild ! ps : alloc_tilemap() !"));
     y = 0;
     while (map[y])
     {
@@ -68,6 +83,14 @@ t_tile  **generate_tilemap(char **map, t_game *game)
         {
             tilemap[y][x].type = define_tiletype(map[y][x]);
             setup_tile(tilemap, x, y);
+            set_gamevars(&tilemap[y][x], game, map[y][x]);
+            x++;
         }
+        tilemap[y][x].type = 0;
+        y++;
     }
+    tilemap[y] = NULL;
+    game->win_size.x = x * IMG_SIZE;
+    game->win_size.y = y * IMG_SIZE;
+    return (tilemap);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoentifi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 01:16:01 by zoentifi          #+#    #+#             */
-/*   Updated: 2024/12/22 01:16:05 by zoentifi         ###   ########.fr       */
+/*   Updated: 2025/02/08 18:38:30 by zoentifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_(char *s1, char *s2)
 {
 	size_t	len1;
 	size_t	len2;
@@ -21,9 +21,9 @@ char	*ft_strjoin(char *s1, char *s2)
 	len1 = 0;
 	len2 = 0;
 	if (s1)
-		len1 = ft_strlen(s1);
+		len1 = ft_strlen_(s1);
 	if (s2)
-		len2 = ft_strlen(s2);
+		len2 = ft_strlen_(s2);
 	new_str = malloc(len1 + len2 + 1);
 	if (!new_str)
 		return (NULL);
@@ -39,7 +39,7 @@ char	*ft_realloc(char *old_str, char *append)
 {
 	char	*new_str;
 
-	new_str = ft_strjoin(old_str, append);
+	new_str = ft_strjoin_(old_str, append);
 	if (old_str)
 		free(old_str);
 	return (new_str);
@@ -75,7 +75,7 @@ int	init_buffer(t_buff *buff)
 	return (1);
 }
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlen_(char *str)
 {
 	size_t	i;
 

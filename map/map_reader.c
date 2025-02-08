@@ -33,10 +33,10 @@ static char **alloc_columns(char *file)
 
     line_count = file_linecount(file);
     if (line_count <= 0)
-        return (error("open or reading error, the file may not exist !"));
+        return (error("open or reading error, the file may not exist !"), NULL);
     map = malloc(sizeof(char *) * (line_count + 1));
     if (!map)
-        return (error("malloc faild ! ps: on alloc_map()"));
+        return (error("malloc faild ! ps: on alloc_map()"), NULL);
     return (map);
 }
 
@@ -51,7 +51,7 @@ char    **read_map(char *file)
         return (NULL);
     fd = open(file, O_RDONLY);
     i = 0;
-    while (get_next_line(fd, &map[i++]))
+    while ((map[i++] = get_next_line(fd)))
         ;
     map[i] = NULL;
     close(fd);

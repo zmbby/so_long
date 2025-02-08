@@ -1,4 +1,6 @@
 #include "so_long.h"
+#include "map/map.h"
+#include "game/game.h"
 
 int main(int ac, char **av)
 {

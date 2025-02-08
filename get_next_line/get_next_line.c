@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoentifi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:48:28 by zoentifi          #+#    #+#             */
-/*   Updated: 2024/12/16 15:48:30 by zoentifi         ###   ########.fr       */
+/*   Updated: 2025/02/08 18:38:05 by zoentifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*fill_line(t_buff *buff, char *line, int fd)
 			}
 		}
 		line = read_from_buffer(buff, line);
-		if (!line || (line[ft_strlen(line) - 1] == '\n'))
+		if (!line || (line[ft_strlen_(line) - 1] == '\n'))
 			return (line);
 	}
 }

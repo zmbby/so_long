@@ -8,10 +8,10 @@ void	ft_putchar_2(const char *format)
 void	ft_putstr(char *str, int **count)
 {
 	if (!str)
-		(**count) += write(1, "(null)", 6);
+		(**count) += write(2, "(null)", 6);
 	else
 		while (*str)
-			**count += write(1, &(*str++), 1);
+			**count += write(2, &(*str++), 1);
 }
 
 void	write_uns_decimal(unsigned int nbr, int **count)

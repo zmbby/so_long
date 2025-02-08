@@ -14,8 +14,7 @@ void	write_format(const char *format, va_list arg, int *count)
 	else if (*format == '%')
 	{
 		(*count)++;
-		size_t ret = write(1, "%", 1);
-		(void)ret;
+		write(1, "%", 1);
 	}
 	else if (*format == 'i')
 		write_int(va_arg(arg, int), &count);
@@ -52,20 +51,11 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
+
 // int main()
 // {
-
-//     unsigned int p = 4294967295;
-//     // int count = ft_printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%%
-// 	// 	%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%",
-// 	// 	'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C',
-// 	// 	"0", 0, 0 ,0 ,0, 42, 0);
-//     // write(1, "\n", 1);
-//     // int count2 = printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%%
-// 	// 	%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%",
-// 	// 	'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C',
-// 	// 	"0", 0, 0 ,0 ,0, 42, 0);
-//     // printf("\ndyali => %d\ndyalhom => %d", count, count2);
-// 	printf("%d",printf("%p", p));
-//     return (0);
+//     /* Returns NULL printing <message> in red */
+// char *message = "malloc faild !";
+// 	ft_printf("\033[0;33m" " Warning\n %s\n" "\033[0m", message);
+//     return 0;
 // }

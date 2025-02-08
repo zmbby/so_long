@@ -23,7 +23,13 @@ int valid_char(char c);
 int valid_uniquechar(char c, char checker, int bool);
 int valid_map(char **map);
 t_tile  **alloc_tilemap(char **map);
-t_tile  **generate_tilemap(char **map, t_game);
+
+// t_tile  **generate_tilemap(char **map, t_game);
 int valid_border(char c, t_vector point, t_vector size);
 
+/**/
+// enemy
+t_enemy *new_enemy(t_enemytype type, t_tile *tile);
+t_enemy *last_enemy(t_enemy *list);
+void    add_enemy(t_game *game, t_enemytype type, t_tile *tile);
 #endif
