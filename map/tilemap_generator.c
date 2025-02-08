@@ -72,6 +72,8 @@ t_tile  **generate_tilemap(char **map, t_game *game)
     int     x;
     int     y;
 
+    x = 0;
+    y = 0;
     tilemap = alloc_tilemap(map);
     if (!tilemap)
         return (null_error("malloc faild ! ps : alloc_tilemap() !"));

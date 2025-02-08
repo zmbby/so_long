@@ -3,7 +3,6 @@
 #include "game.h"
 #include "../map/map.h"
 
-t_tile  **generate_tilemap(char **map, t_game *game);
 
 t_tile  **map_init(int ac, char **av, t_game *game)
 {
