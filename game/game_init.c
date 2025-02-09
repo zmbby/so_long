@@ -48,6 +48,8 @@ void    game_init(t_game *game)
         error("open a windows failed !");
     mlx_hook(game->win, 17, 0, end_program, game);
     open_image(game);
+    game->white_panel = new_panel(game, new_color(254, 254, 254, 0));
+    game->red_panel = new_panel(game, new_color(197, 4, 4, 0));
 }
 
 int start(t_game *game, int ac, char **av)

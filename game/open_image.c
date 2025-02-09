@@ -56,7 +56,7 @@ static void	open_door_imgs(t_game *game)
 
 void	open_image(t_game *game)
 {
-	// open_wallimgs_up (game);
+	open_walls_up (game);
 	// open_wallimgs_down (game);
 	open_player_imgs(game);
 	open_collect_imgs(game);

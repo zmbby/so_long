@@ -24,6 +24,28 @@ typedef enum s_tiletype
     FOLLOWER = 'F',
 } t_tiletype;
 
+
+typedef struct s_panel
+{
+	void		*pointer;
+	char		*pixels;
+	t_vector	size;
+	int			bpp;
+	int			line_size;
+	int			endian;
+}	t_panel;
+
+// ------------------- colors
+
+typedef struct s_color
+{
+    int r;
+    int g;
+    int b;
+    int a;
+}   t_color;
+
+
 typedef struct s_tile
 {
     t_tiletype  type;
