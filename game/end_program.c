@@ -16,17 +16,13 @@ void    free_tilemap(t_game *game)
 
 void    free_enemies(t_game *game)
 {
+    t_enemy *head = game->enemy_list;
     t_enemy *next;
-
-    if (!game->enemy_list)
-        return ;
-    while(1)
+    while(head)
     {
-        next = game->enemy_list->next;
-        free (game->enemy_list);
-        if (!next)
-            break;
-        game->enemy_list = next;
+        next = head->next;
+        free (head);
+        head = next;
     }
 }
 

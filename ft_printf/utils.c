@@ -1,13 +1,13 @@
 #include "ft_printf.h"
 
-void	write_int(int i, int **count)
+void	write_int(int i, int *count)
 {
 	long	nbr;
 
 	nbr = i;
 	if (nbr < 0)
 	{
-		(**count)++;
+		(*count)++;
 		write(1, "-", 1);
 		nbr *= -1;
 	}
@@ -16,11 +16,11 @@ void	write_int(int i, int **count)
 		write_int(nbr / 10, count);
 		nbr = nbr % 10;
 	}
-	(**count)++;
+	(*count)++;
 	ft_putchar(nbr + 48);
 }
 
-void	ft_print_hex(unsigned long a, int ***count)
+void	ft_print_hex(unsigned long a, int *count)
 {
 	char	*base_hex;
 
@@ -30,26 +30,26 @@ void	ft_print_hex(unsigned long a, int ***count)
 		ft_print_hex(a / 16, count);
 		a = a % 16;
 	}
-	(***count)++;
+	(*count)++;
 	ft_putchar(base_hex[a]);
 }
 
-void	write_hexa_add(void *ptr, int **count)
+void	write_hexa_add(void *ptr, int *count)
 {
 	unsigned long	add;
 
 	add = (unsigned long)ptr;
 	if (add == 0)
-		(**count) += write(1, "(nil)", 5);
+		(*count) += write(1, "(nil)", 5);
 	else
 	{
-		(**count) += 2;
+		(*count) += 2;
 		write(1, "0x", 2);
-		ft_print_hex(add, &count);
+		ft_print_hex(add, count);
 	}
 }
 
-void	ft_print_hex_v2(unsigned int a, int **count)
+void	ft_print_hex_v2(unsigned int a, int *count)
 {
 	char	*base_hex;
 
@@ -59,11 +59,11 @@ void	ft_print_hex_v2(unsigned int a, int **count)
 		ft_print_hex_v2(a / 16, count);
 		a = a % 16;
 	}
-	(**count)++;
+	(*count)++;
 	ft_putchar(base_hex[a]);
 }
 
-void	ft_print_hex_v3(unsigned int a, int **count)
+void	ft_print_hex_v3(unsigned int a, int *count)
 {
 	char *base_hex;
 
@@ -73,6 +73,6 @@ void	ft_print_hex_v3(unsigned int a, int **count)
 		ft_print_hex_v3(a / 16, count);
 		a = a % 16;
 	}
-	(**count)++;
+	(*count)++;
 	ft_putchar(base_hex[a]);
 }

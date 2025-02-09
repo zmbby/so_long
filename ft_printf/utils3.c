@@ -5,22 +5,22 @@ void	ft_putchar_2(const char *format)
 	write(1, &*format, 1);
 }
 
-void	ft_putstr(char *str, int **count)
+void	ft_putstr(char *str, int *count)
 {
 	if (!str)
-		(**count) += write(2, "(null)", 6);
+		(*count) += write(2, "(null)", 6);
 	else
 		while (*str)
-			**count += write(2, &(*str++), 1);
+			*count += write(2, &(*str++), 1);
 }
 
-void	write_uns_decimal(unsigned int nbr, int **count)
+void	write_uns_decimal(unsigned int nbr, int *count)
 {
 	if (nbr > 9)
 	{
 		write_uns_decimal(nbr / 10, count);
 		nbr = nbr % 10;
 	}
-	(**count)++;
+	(*count)++;
 	ft_putchar(nbr + 48);
 }

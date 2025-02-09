@@ -67,7 +67,7 @@ typedef struct s_wall_img
 	void	*left;
 }   t_wall_img;
 
-typedef struct s_emeny
+typedef struct s_enemy
 {
     t_enemytype     type;
     int             dir;

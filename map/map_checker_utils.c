@@ -3,25 +3,21 @@
 int valid_char(char c)
 {
     if (c == '1' || c == '0' || c == 'C' || c == 'E' || c == 'P'
-        || c == 'H' || c == 'V' || c == 'F')
+        || c == 'H' || c == 'V' || c == 'F' || c == '\n')
         return (1);
     return (0);
 }
 
-int valid_uniquechar(char c, char checker, int bool)
+int valid_uniquechar(char c, int *b_player)
 {
-    if (c == checker && bool == 0)
-        bool = 1;
-    else if (c == checker && bool == 1)
-        return (0);
+    if (c == 'P' && *b_player == 0)
+        *b_player = 1;
+    else if (c == 'P' && *b_player == 1)
+        return (0); 
     return (1);
 }
 
-int valid_border(char c, t_vector point, t_vector size)
+int valid_border(char**map, int y, t_vector size)
 {
-    if (point.y == 0 || point.x == 0 
-        || point.y == size.y - 1 || point.x == size.x - 1)
-        if (c != '1')
-            return (0);
-    return (1);
+    return (map[y][0] == '1' && map[y][size.x - 2] == '1');
 }

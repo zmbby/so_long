@@ -23,12 +23,10 @@ static int check(char **map, t_mapchecker *data)
     y = data->point.y;
     if (!valid_char(map[y][x]))
         return (error("invalid map character"));
-    if (!valid_uniquechar(map[y][x], 'P', data->b_player))
+    if (!valid_uniquechar(map[y][x], &data->b_player))
         return (error("must be only one player !"));
     if (map[y][x] == 'E')
         data->b_exit = 1;
-    if (!valid_border(map[y][x], data->point, data->size))
-        return (error("map must be surrounded by walls !"));
     if (map[y][x] == 'C')
         data->b_collect = 1;
     return (1);
@@ -43,13 +41,13 @@ int valid_map(char **map)
     valid = 1;
     while (map[data.point.y])
     {
-        if (ft_strlen(map[data.point.y]) != (size_t)data.point.x)
-            valid = error("map must be rectangular !");
+        if (!valid_border(map, data.point.y, data.size))
+            return (error("map must be surrounded by walls !"));
         data.point.x = 0;
         while(map[data.point.y][data.point.x])
         {
             if (check(map, &data) == 0)
-                valid = 0;
+                return (0);
             data.point.x++;
         }
         data.point.y++;

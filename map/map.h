@@ -20,12 +20,12 @@ typedef struct s_mapchecker
 int valid_file(int ac, char *file);
 char    **read_map(char *file);
 int valid_char(char c);
-int valid_uniquechar(char c, char checker, int bool);
+int valid_uniquechar(char c, int *b_player);
 int valid_map(char **map);
 t_tile  **alloc_tilemap(char **map);
 
 t_tile  **generate_tilemap(char **map, t_game *game);
-int valid_border(char c, t_vector point, t_vector size);
+int valid_border(char**map, int y, t_vector size);
 
 /**/
 // enemy

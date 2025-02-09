@@ -7,9 +7,9 @@ int	init_format(const char *format)
 	return (0);
 }
 
-void	write_character(char c, int **count)
+void	write_character(char c, int *count)
 {
-	(**count) += write(1, &c, 1);
+	(*count) += write(1, &c, 1);
 }
 
 void	ft_putchar(char c)
@@ -17,14 +17,14 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	write_decimale(int i, int **count)
+void	write_decimale(int i, int *count)
 {
 	long nbr;
 
 	nbr = i;
 	if (nbr < 0)
 	{
-		(**count)++;
+		(*count)++;
 		write(1, "-", 1);
 		nbr *= -1;
 	}
@@ -33,6 +33,6 @@ void	write_decimale(int i, int **count)
 		write_decimale(nbr / 10, count);
 		nbr = nbr % 10;
 	}
-	(**count)++;
+	(*count)++;
 	ft_putchar(nbr + 48);
 }
