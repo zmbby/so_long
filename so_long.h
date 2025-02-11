@@ -13,6 +13,16 @@
 
 # define IMG_SIZE 64
 
+// ------------------ KEYS
+
+
+#define ESC 65307
+
+// enum e_keycode
+// {
+//     ESC = 65307
+// };
+
 typedef enum s_tiletype
 {
     EMPTY = '0',

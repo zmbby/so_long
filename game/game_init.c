@@ -42,8 +42,7 @@ void    game_init(t_game *game)
     if (!game->mlx)
         error("mlx failed !");
     game->win = mlx_new_window(game->mlx,
-            game->win_size.x + IMG_SIZE / 2,
-            game->win_size.y, "so_long");
+            game->win_size.x, game->win_size.y, "so_long");
     if (!game->win)
         error("open a windows failed !");
     mlx_hook(game->win, 17, 0, end_program, game);

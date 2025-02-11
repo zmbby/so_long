@@ -30,7 +30,7 @@ int end_program(t_game *game)
 {
     free_tilemap(game);
     game->tilemap = NULL;
-    free_enemies(game);
-    game->enemy_list = NULL;
+    // free_enemies(game);
+    // game->enemy_list = NULL;
     exit(0);
 }

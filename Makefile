@@ -6,12 +6,12 @@ OBJS = $(SRCS:.c=.o)
 libft = libft
 printf = ft_printf
 libs = libft/libft.a ft_printf/libftprintf.a
-GAME_SRC = game/game_init.c game/end_program.c game/open_image.c game/open_wall.c game/open_panel.c
+GAME_SRC = game/draw_wall.c game/end_program.c game/game_init.c game/open_image.c game/open_panel.c game/open_wall.c game/render.c game/update.c game/input.c
 MAP_SRC = map/map_checker.c  map/map_checker_utils.c  map/map_reader.c  map/tilemap_generator.c map/enemy_generator.c
 GNL_SRC = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -std=gnu17
+# CFLAGS = -Wall -Wextra -Werror 
 
 MLX_FLAGS = -Lminilibx-linux -lmlx -lXext -lX11
 
