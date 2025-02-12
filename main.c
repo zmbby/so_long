@@ -8,7 +8,7 @@ int main(int ac, char **av)
     if (!start(&game, ac, av))
         return (0);
     mlx_loop_hook(game.mlx, update, (void *)&game);
-    // mlx_key_hook(game.win, input, (void *)&game);
+    mlx_key_hook(game.win, input, (void *)&game);
     mlx_loop(game.mlx);
     return (0);
 }
