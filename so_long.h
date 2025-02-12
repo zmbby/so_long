@@ -16,12 +16,16 @@
 // ------------------ KEYS
 
 
-#define ESC 65307
+// #define ESC 65307
 
-// enum e_keycode
-// {
-//     ESC = 65307
-// };
+enum e_keycode
+{
+    ESC = 65307,
+    KEY_DOWN = 65364, 
+	KEY_LEFT = 65361,
+	KEY_RIGHT = 65363,
+    KEY_UP = 65362,
+};
 
 typedef enum s_tiletype
 {
