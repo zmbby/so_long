@@ -23,8 +23,28 @@ int draw_corner(t_tile tile, t_game game, t_vector pos)
     return (1);
 }
 
+int draw_sides(t_tile tile, t_game game, t_vector pos)
+{
+    if (tile.position.x == 0)
+        mlx_put_image_to_window(game.mlx, game.win,
+            game.wall_imgs.left, pos.x, pos.y);
+    else if (tile.position.x == game.win_size.x - IMG_SIZE)
+        mlx_put_image_to_window(game.mlx, game.win,
+            game.wall_imgs.right, pos.x, pos.y);
+    else if (tile.position.y == game.win_size.y - IMG_SIZE)
+        mlx_put_image_to_window(game.mlx, game.win,
+            game.wall_imgs.down, pos.x, pos.y);
+    else
+        return (0);
+    return (1);
+}
+
 void    draw_wall(t_tile tile, t_game game, t_vector pos)
 {
     if (draw_corner(tile, game, pos))
         return ;
+    else if (draw_sides(tile, game, pos))
+        return ;
+    mlx_put_image_to_window(game.mlx, game.win,
+        game.wall_imgs.block, pos.x, pos.y);
 }
