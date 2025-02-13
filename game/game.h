@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zm <zm@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 17:02:13 by zoentifi          #+#    #+#             */
-/*   Updated: 2025/02/11 18:20:26 by zm               ###   ########.fr       */
+/*   Updated: 2025/02/13 18:23:35 by zoentifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,17 @@ void    draw_wall(t_tile tile, t_game game, t_vector pos);
 int update(t_game *game);
 void    render(t_game game);
 int input(int key, t_game *game);
+void    move_to_empty(t_game *game, t_tile *tile);
+void    effect_anim(t_effect *effect, t_vector pos);
+void    action_anim(t_player *player);
+void    pick_coin(t_game *game, t_tile *tile);
+void    remove_player(t_game *game);
+void    move_to_exit(t_game *game, t_tile *tile);
+void    move_to_enemy(t_game *game, t_tile *tile);
+void    kill_player(t_game *game, t_vector pos);
+int move_hor(t_enemy *enemy, t_game *game);
+int move_ver(t_enemy *enemy, t_game *game);
+void    follow_player(t_enemy *enemy, t_game *game);
+void    move_enemy(t_game *game);
+
 #endif

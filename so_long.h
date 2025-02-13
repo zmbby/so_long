@@ -3,6 +3,7 @@
 
 
 #include "basics.h"
+#include <X11/X.h>
 #include "minilibx-linux/mlx.h"
 #include <stdio.h>
 #include <stdlib.h>

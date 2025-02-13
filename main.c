@@ -2,13 +2,16 @@
 #include "map/map.h"
 #include "game/game.h"
 
+//------------------16 line and 31 col is the limit dell machine
+
 int main(int ac, char **av)
 {
     t_game  game;
     if (!start(&game, ac, av))
         return (0);
     mlx_loop_hook(game.mlx, update, (void *)&game);
-    mlx_key_hook(game.win, input, (void *)&game);
+    mlx_hook(game.win, KeyPress, KeyPressMask, input, (void *)&game);
+    // mlx_key_hook(game.win, input, (void *)&game);
     mlx_loop(game.mlx);
     return (0);
 }
