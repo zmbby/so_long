@@ -26,7 +26,7 @@ int move_to(t_game *game, t_tile *tile)
     }
     else if (tile->type == WALL)
         return (0);
-    // move_enemy(game);
+    move_enemy(game);
     return (1);
 }
 

@@ -6,12 +6,14 @@ t_tile  **alloc_tilemap(char **map)
     int     i;
 
     tilemap = malloc(sizeof(t_tile *) * (ft_chartable_linecount(map) + 1));
+    // ft_printf("%d\n", ft_chartable_linecount(map));
     if (tilemap == NULL)
         return (NULL);
     i = 0;
     while (map[i] != NULL)
     {
         tilemap[i] = malloc(sizeof(t_tile) * (ft_strlen(*map) + 1));
+        // ft_printf("%d\n", ft_strlen(*map));
         if (tilemap == NULL)
         {
             while (i > 0)
@@ -20,6 +22,7 @@ t_tile  **alloc_tilemap(char **map)
         }
         i++;
     }
+    tilemap[i] = NULL;
     return (tilemap);
 }
 

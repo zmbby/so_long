@@ -11,7 +11,7 @@ MAP_SRC = map/map_checker.c  map/map_checker_utils.c  map/map_reader.c  map/tile
 GNL_SRC = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
 CC = gcc
-# CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror -g3 -ggdb -O0
 
 MLX_FLAGS = -Lminilibx-linux -lmlx -lXext -lX11
 
@@ -42,3 +42,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+.SECANDARY : (OBJS)
