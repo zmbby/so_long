@@ -6,7 +6,7 @@
 
 int main(int ac, char **av)
 {
-    t_game  game;
+    t_game game = {0};
     if (!start(&game, ac, av))
         return (0);
     mlx_hook(game.win, KeyPress, KeyPressMask, input, (void *)&game);

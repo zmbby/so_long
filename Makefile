@@ -11,7 +11,7 @@ MAP_SRC = map/map_checker.c  map/map_checker_utils.c  map/map_reader.c  map/tile
 GNL_SRC = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -ggdb -O0
+CFLAGS = -g3 -Wall -Wextra -Werror
 
 MLX_FLAGS = -Lminilibx-linux -lmlx -lXext -lX11
 
@@ -27,7 +27,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) $(libs) $(INCLUDES) -o $(NAME)
 
 %.o: %.c
-	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 $(INCLUDES) -c $< -o $@
+	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 $(INCLUDES) -c $< -o $@
 
 clean:
 	$(MAKE) -C $(libft) clean
