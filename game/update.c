@@ -35,11 +35,12 @@ static void collec_animation(t_collect_img *img)
     frame++;
 }
 
-static void	enemy_animation(t_enemy_img *img)
+static void	enemy_animation(t_enemy_img *img, t_game *game)
 {
 	static int	basic_count;
 	static int	follower_count;
 
+    move_enemy(game);
 	if (basic_count == img->basic_anim)
 		img->basic_current = img->basic_01;
 	else if (basic_count > img->basic_anim * 2)
@@ -66,10 +67,17 @@ static void effect_animation(t_effect *effect)
 
 int update(t_game *game)
 {
-    player_animation(&game->player);
-    collec_animation(&game->collects_imgs);
-    effect_animation(&game->effect);
-    enemy_animation(&game->enemy_imgs);
-    render(*game);
+    static int counter = 0;
+
+    counter++;
+    if (counter >= 450)
+    {
+        effect_animation(&game->effect);
+        player_animation(&game->player);
+        collec_animation(&game->collects_imgs);
+        enemy_animation(&game->enemy_imgs, game);
+        render(*game);
+        counter = 0;
+    }
     return (1);
 }

@@ -141,6 +141,15 @@ typedef struct s_effect
 	int			counter;
 }	t_effect;
 
+typedef struct s_endgame_img
+{
+    void            *you_win_img;
+    void            *game_over_img;
+    t_vector        win_vec;
+    t_vector        lose_vec;
+}   t_endgame_img;
+
+
 typedef struct s_game
 {
     void    *mlx;
@@ -158,9 +167,11 @@ typedef struct s_game
 	t_enemy_img		enemy_imgs;
 	void			*door_open_img;
 	void			*door_close_img;
+    t_endgame_img   endgame;
 	t_effect		effect;
 	void			*red_panel;
 	void			*white_panel;
+    int             counter;
 } t_game;
 
 // functions 

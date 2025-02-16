@@ -77,7 +77,7 @@ int move_ver(t_enemy *enemy, t_game *game)
     return (1);
 }
 
-void move_enemy(t_game *game)
+void    move_follower(t_game *game)
 {
     t_enemy *current;
 
@@ -87,13 +87,35 @@ void move_enemy(t_game *game)
     current = game->enemy_list;
     while (current != NULL)
     {
-        if (current->type == HORIZONTAL_ENEM)
-            move_hor(current, game);
-        else if (current->type == VERTICAL_ENEM)
-            move_ver(current, game);
-        else if (current->type == FOLLOW_ENEM)
+        if (current->type == FOLLOW_ENEM)
             follow_player(current, game);
         
         current = current->next;
+    }
+}
+
+void move_enemy(t_game *game)
+{
+    t_enemy *current;
+
+    static int counter = 0;
+
+    counter++;
+    if (counter >= 40)
+    {
+        if (game == NULL || game->enemy_list == NULL)
+            return;
+        current = game->enemy_list;
+        while (current != NULL)
+        {
+            if (current->type == HORIZONTAL_ENEM)
+                move_hor(current, game);
+            else if (current->type == VERTICAL_ENEM)
+                move_ver(current, game);
+            else if (current->type == FOLLOW_ENEM)
+                follow_player(current, game);
+            current = current->next;
+        }
+        counter = 0;
     }
 }

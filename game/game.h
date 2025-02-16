@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zm <zm@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 17:02:13 by zoentifi          #+#    #+#             */
-/*   Updated: 2025/02/13 18:23:35 by zoentifi         ###   ########.fr       */
+/*   Updated: 2025/02/17 00:32:41 by zm               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@ int move_hor(t_enemy *enemy, t_game *game);
 int move_ver(t_enemy *enemy, t_game *game);
 void    follow_player(t_enemy *enemy, t_game *game);
 void    move_enemy(t_game *game);
+void    move_follower(t_game *game);
+void    end_game_imgs(t_game *game);
 
 #endif
