@@ -32,4 +32,5 @@ int valid_border(char**map, int y, t_vector size);
 t_enemy *new_enemy(t_enemytype type, t_tile *tile);
 t_enemy *last_enemy(t_enemy *list);
 void    add_enemy(t_game *game, t_enemytype type, t_tile *tile);
+int check_path(char **map);
 #endif

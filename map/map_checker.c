@@ -54,6 +54,8 @@ int valid_map(char **map)
     }
     if (!data.b_player || !data.b_exit || !data.b_collect)
         valid = error("there must be one player , Exit and at least on collecteble !");
+    if (valid && !check_path(map))
+        valid = 0;
     return (valid);
 }
 

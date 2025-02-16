@@ -28,6 +28,27 @@ static void draw_image(t_tile tile, t_game game, t_vector pos)
             game.enemy_imgs.follow_current, pos.x, pos.y);
 }
 
+static void draw_effect(t_game game)
+{
+    if (game.effect.counter < game.effect.frames)
+        mlx_put_image_to_window(game.mlx, game.win,
+            game.effect.img, game.effect.pos.x,
+            game.effect.pos.y);
+}
+
+static void draw_text(t_game game)
+{
+    char *str;
+
+    str = ft_itoa(game.moves);
+    if (game.collects >= 0)
+        mlx_string_put(game.mlx, game.win,
+            game.win_size.x - IMG_SIZE / 2.3,
+            IMG_SIZE - IMG_SIZE / 1.5,
+            -1, str);
+    free(str);
+}
+
 void    render(t_game game)
 {
     t_tile  tile;
@@ -43,8 +64,10 @@ void    render(t_game game)
         {
             tile = game.tilemap[y][x];
             draw_image(tile, game, tile.position);
+            draw_effect(game);
             x++;
         }
         y++;
     }
+    draw_text(game);
 }
