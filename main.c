@@ -15,6 +15,20 @@ int main(int ac, char **av)
     mlx_loop(game.mlx);
     return (0);
 }
+// int main()
+// {
+//     t_game game = {0}; 
+//     add_enemy(&game, FOLLOW_ENEM, NULL);
+//     add_enemy(&game, FOLLOW_ENEM, NULL);
+//     add_enemy(&game, HORIZONTAL_ENEM, NULL);
+//     int i = 0;
+//     while (game.enemy_list)
+//     {
+//         i++;
+//         game.enemy_list = game.enemy_list->next;
+//     }
+//     printf("-------%d--\n", i);
+// }
 // #include <mlx.h>
 // #include <stdio.h>
 

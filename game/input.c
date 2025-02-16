@@ -49,6 +49,6 @@ int input(int key, t_game *game)
 	else
 		return (0);
 	if (moved)
-		ft_printf("Moves -> %d\n", ++game->moves);
+		ft_printf("Moves -> %d\n", game->moves++);
     return (1);
 }

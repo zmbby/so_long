@@ -27,7 +27,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) $(libs) $(INCLUDES) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 $(INCLUDES) -c $< -o $@
+	$(CC) $(CFLAGS) -ggdb3 -I/usr/include -Imlx_linux -O3 $(INCLUDES) -c $< -o $@
 
 clean:
 	$(MAKE) -C $(libft) clean

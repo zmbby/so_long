@@ -17,7 +17,7 @@ void    free_tilemap(t_game *game)
 void    free_enemies(t_game *game)
 {
     t_enemy *head = game->enemy_list;
-    t_enemy *next;
+    t_enemy *next = NULL;
     while(head)
     {
         next = head->next;
@@ -32,7 +32,8 @@ int end_program(t_game *game)
     game->tilemap = NULL;
     free_enemies(game);
     game->enemy_list = NULL;
-    // mlx_destroy_display(game->win)
+    mlx_destroy_window(game->mlx, game->win);
+    mlx_destroy_display(game->mlx);
     free(game->mlx);
     exit(0);
 }

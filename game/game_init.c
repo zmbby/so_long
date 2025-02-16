@@ -34,7 +34,7 @@ static void anim_setup(t_game *game)
     game->effect.frames = 7;
     game->enemy_imgs.basic_anim = 16;
     game->enemy_imgs.follow_anim = 6;
-    game->enemy_list = NULL;
+
 }
 
 void    game_init(t_game *game)

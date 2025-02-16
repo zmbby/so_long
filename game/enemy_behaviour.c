@@ -6,7 +6,8 @@ void    move_enemy_to(t_enemy *enemy, t_tile *tile)
     if (enemy->type == FOLLOW_ENEM)
         tile->type = FOLLOWER;
     else
-        enemy->tile = tile;
+        tile->type = ENEMY;
+    enemy->tile = tile;
 }
 
 int change_dir(t_enemy *enemy)
