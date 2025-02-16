@@ -17,10 +17,17 @@ t_list	*ft_lstnew(void *con)
 /* Adds <new> at the end of <lst> */
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (*lst)
-		(ft_lstlast(*lst))->next = new;
-	else
-		*lst = new;
+    if (!lst || !new)
+        	return;
+    if (!*lst)
+        *lst = new;
+    else
+    {
+        t_list *tmp = *lst;
+        while (tmp->next)
+            tmp = tmp->next;
+        tmp->next = new;
+    }
 }
 
 /* Sets the element pointed by <new> as the 
