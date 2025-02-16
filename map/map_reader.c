@@ -54,6 +54,7 @@ char    **read_map(char *file)
     while ((map[i] = get_next_line(fd)) != NULL)
         i++;
     map[i] = NULL;
+    get_next_line(-1);
     close(fd);
     return (map);
 }

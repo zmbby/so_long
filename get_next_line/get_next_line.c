@@ -24,8 +24,8 @@ char	*fill_line(t_buff *buff, char *line, int fd)
 			{
 				if (buff->bytes_read == 0)
 				{
-					free(buff->buffer);
-					buff->buffer = NULL;
+					// free(buff->buffer);
+					// buff->buffer = NULL;
 					return (line);
 				}
 				free(line);
@@ -44,7 +44,7 @@ char	*get_next_line(int fd)
 	char			*line;
 
 	line = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0 || !init_buffer(&buff))
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line = fill_line(&buff, line, fd);
 	if (!line)
@@ -52,19 +52,19 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*int main()
-{
-  int fd = open("test.ber", O_RDWR);
-  char *line;
-  while ((line = get_next_line(fd)))
-  {
-    printf("%s", line);
-    free(line);
-  }
-  close (fd);
-  return 0;
-}*/
-//int	main(void)
+// int main()
+// {
+//   int fd = open("test.ber", O_RDWR);
+//   char *line;
+//   while ((line = get_next_line(fd)))
+//   {
+//     printf("%s", line);
+//     free(line);
+//   }
+//   close (fd);
+//   return 0;
+// }
+// int	main(void)
 // {
 // 	int		fd;
 // 	char	*line;

@@ -64,16 +64,16 @@ char	*read_from_buffer(t_buff *buff, char *line)
 	return (line);
 }
 
-int	init_buffer(t_buff *buff)
-{
-	if (!buff->buffer)
-	{
-		buff->buffer = malloc((size_t)BUFFER_SIZE);
-		if (!buff->buffer)
-			return (0);
-	}
-	return (1);
-}
+// int	init_buffer(t_buff *buff)
+// {
+// 	if (!buff->buffer)
+// 	{
+// 		buff->buffer = malloc((size_t)BUFFER_SIZE);
+// 		if (!buff->buffer)
+// 			return (0);
+// 	}
+// 	return (1);
+// }
 
 size_t	ft_strlen_(char *str)
 {

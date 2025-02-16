@@ -30,8 +30,8 @@ int end_program(t_game *game)
 {
     free_tilemap(game);
     game->tilemap = NULL;
-    // free_enemies(game);
-    // game->enemy_list = NULL;
+    free_enemies(game);
+    game->enemy_list = NULL;
     // mlx_destroy_display(game->win)
     free(game->mlx);
     exit(0);

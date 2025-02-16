@@ -20,12 +20,12 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 42
 # endif
 
 typedef struct s_buff
 {
-	char	*buffer;
+	char	buffer[BUFFER_SIZE];
 	int		buffer_index;
 	int		bytes_read;
 }			t_buff;

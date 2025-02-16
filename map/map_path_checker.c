@@ -94,8 +94,6 @@ int check_path(char **map)
         }
         y++;
     }
-
-    // Free the copy
     y = 0;
     while (map_copy[y])
         free(map_copy[y++]);
