@@ -56,7 +56,7 @@ void    end_game(t_game *game, int won)
         int y = (game->win_size.y - height) / 2;
         mlx_put_image_to_window(game->mlx, game->win, end_img, x, y);
         mlx_do_sync(game->mlx);
-        sleep(5);
+        sleep(1);
         mlx_destroy_image(game->mlx, end_img);
     }
     cleanup_images(game);
