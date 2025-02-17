@@ -141,13 +141,19 @@ typedef struct s_effect
 	int			counter;
 }	t_effect;
 
-typedef struct s_endgame_img
+// typedef struct s_endgame_img
+// {
+//     void            *you_win_img;
+//     void            *game_over_img;
+//     t_vector        win_vec;
+//     t_vector        lose_vec;
+// }   t_endgame_img;
+
+typedef struct s_garbage
 {
-    void            *you_win_img;
-    void            *game_over_img;
-    t_vector        win_vec;
-    t_vector        lose_vec;
-}   t_endgame_img;
+    void            *img;
+    struct s_garbage *next;
+} t_garbage;
 
 
 typedef struct s_game
@@ -167,16 +173,18 @@ typedef struct s_game
 	t_enemy_img		enemy_imgs;
 	void			*door_open_img;
 	void			*door_close_img;
-    t_endgame_img   endgame;
 	t_effect		effect;
 	void			*red_panel;
 	void			*white_panel;
     int             counter;
+    t_garbage       *garbage_head;
 } t_game;
 
 // functions 
 int error(char *msg);
 void	*null_error(char *message);
 void	print_warning(char *message);
+void    cleanup_images(t_game *game);
+void    end_game(t_game *game, int won);
 
 #endif

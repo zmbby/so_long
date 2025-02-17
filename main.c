@@ -3,6 +3,7 @@
 #include "game/game.h"
 
 //------------------16 line and 31 col is the limit dell machine
+//------------------33 lineand 61 col limit mac
 
 int main(int ac, char **av)
 {

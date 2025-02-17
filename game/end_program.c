@@ -25,29 +25,47 @@ void    free_enemies(t_game *game)
         head = next;
     }
 }
+void    add_to_garbage(t_game *game, void *img)
+{
+    t_garbage  *new;
+    t_garbage  *temp;
 
-// void    free_list(t_list **head)
-// {
-//     t_list *next;
+    new = malloc(sizeof(t_garbage));
+    if (!new)
+        return;
+    new->img = img;
+    new->next = NULL;
 
-//     next = NULL;
-//     while (head)
-//     {
-//         next = (*head)->next;
-//         free(head);
-//         *head = next;
-//     }
-// }
+    if (!game->garbage_head)
+    {
+        game->garbage_head = new;
+        return;
+    }
+    temp = game->garbage_head;
+    while (temp->next)
+        temp = temp->next;
+    temp->next = new;
+}
+
+void    *load_xpm(t_game *game, char *path)
+{
+    void    *img;
+    
+    img = mlx_xpm_file_to_image(game->mlx, path, &game->img_size.x, &game->img_size.y);
+    if (img)
+        add_to_garbage(game, img);
+    return (img);
+}
 
 int end_program(t_game *game)
 {
+    cleanup_images(game);
     free_tilemap(game);
     game->tilemap = NULL;
     free_enemies(game);
     game->enemy_list = NULL;
     mlx_destroy_window(game->mlx, game->win);
     mlx_destroy_display(game->mlx);
-    // free_list(game->head);
     free(game->mlx);
     exit(0);
 }

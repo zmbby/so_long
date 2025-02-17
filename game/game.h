@@ -47,6 +47,6 @@ int move_ver(t_enemy *enemy, t_game *game);
 void    follow_player(t_enemy *enemy, t_game *game);
 void    move_enemy(t_game *game);
 void    move_follower(t_game *game);
-void    end_game_imgs(t_game *game);
-
+void    *load_xpm(t_game *game, char *path);
+void    add_to_garbage(t_game *game, void *img);
 #endif

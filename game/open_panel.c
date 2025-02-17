@@ -43,5 +43,6 @@ void    *new_panel(t_game *game, t_color color)
     panel.size.x = game->win_size.x;
     panel.size.y = game->win_size.y;
     color_panel(&panel, color);
+    add_to_garbage(game, panel.pointer);
     return (panel.pointer);
 }

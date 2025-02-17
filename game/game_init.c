@@ -43,7 +43,7 @@ void    game_init(t_game *game)
     if (!game->mlx)
         error("mlx failed !");
     game->win = mlx_new_window(game->mlx,
-            game->win_size.x, game->win_size.y, "so_long");
+            game->win_size.x, game->win_size.y, "so_long hbek !");
     if (!game->win)
         error("open a windows failed !");
     mlx_hook(game->win, 17, 0, end_program, game);

@@ -26,7 +26,7 @@ static int check(char **map, t_mapchecker *data)
     if (!valid_uniquechar(map[y][x], &data->b_player))
         return (error("must be only one player !"));
     if (map[y][x] == 'E')
-        data->b_exit = 1;
+        data->b_exit += 1;
     if (map[y][x] == 'C')
         data->b_collect = 1;
     return (1);
@@ -52,7 +52,7 @@ int valid_map(char **map)
         }
         data.point.y++;
     }
-    if (!data.b_player || !data.b_exit || !data.b_collect)
+    if (!data.b_player || (!data.b_exit || data.b_exit > 1) || !data.b_collect)
         valid = error("there must be one player , Exit and at least on collecteble !");
     if (valid && !check_path(map))
         valid = 0;
