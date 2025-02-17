@@ -26,14 +26,12 @@ int move_to(t_game *game, t_tile *tile)
     }
     else if (tile->type == WALL)
         return (0);
-    // move_follower(game);
     return (1);
 }
 
 int input(int key, t_game *game)
 {
     int moved;
-    // (void)moved;
     if (key == ESC)
         end_program(game);
     if (game->player.tile == NULL)
