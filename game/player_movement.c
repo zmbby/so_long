@@ -27,7 +27,7 @@ void    move_to_exit(t_game *game, t_tile *tile)
 
 void    move_to_enemy(t_game *game, t_tile *tile)
 {
-    remove_player(game);
+    kill_player(game);
     effect_anim(&game->effect, tile->position);
     mlx_put_image_to_window(game->mlx, game->win,
         game->red_panel, 0, 0);
