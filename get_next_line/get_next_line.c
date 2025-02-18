@@ -6,7 +6,7 @@
 /*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:48:28 by zoentifi          #+#    #+#             */
-/*   Updated: 2025/02/08 18:38:05 by zoentifi         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:05:34 by zoentifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,7 @@ char	*fill_line(t_buff *buff, char *line, int fd)
 			if (buff->bytes_read <= 0)
 			{
 				if (buff->bytes_read == 0)
-				{
-					// free(buff->buffer);
-					// buff->buffer = NULL;
 					return (line);
-				}
 				free(line);
 				return (NULL);
 			}
@@ -48,7 +44,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = fill_line(&buff, line, fd);
 	if (!line)
-    	return (NULL);
+		return (NULL);
 	return (line);
 }
 
@@ -62,7 +58,7 @@ char	*get_next_line(int fd)
 //     free(line);
 //   }
 //   close (fd);
-//   return 0;
+//   return (0);
 // }
 // int	main(void)
 // {
@@ -82,7 +78,6 @@ char	*get_next_line(int fd)
 //   line = get_next_line(fd);
 // 	printf("%s", line);
 // 	free(line);
-
 
 // 	close(fd);
 // 	return (0);

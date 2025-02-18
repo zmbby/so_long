@@ -1,8 +1,20 @@
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mem_set.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/18 15:02:34 by zoentifi          #+#    #+#             */
+/*   Updated: 2025/02/18 15:02:36 by zoentifi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
+#include <stdlib.h>
 
 /* Turns <n> bytes if <str> into <c> */
-void	*ft_memset (void *str, int c, size_t n)
+void	*ft_memset(void *str, int c, size_t n)
 {
 	unsigned char	*auxstr;
 	int				i;
@@ -18,12 +30,12 @@ void	*ft_memset (void *str, int c, size_t n)
 }
 
 /* Turns <n> bytes of <target> into '\0' */
-void	ft_bzero (void *target, size_t n)
+void	ft_bzero(void *target, size_t n)
 {
 	ft_memset(target, '\0', n);
 }
 
-void	*ft_memcpy (void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	char	*auxdest;
 	char	*auxsrc;
@@ -66,7 +78,7 @@ If the char <c> occurs in <src>, the copy stops
 and a pointer to the byte after the copy of <c>
 in <dst> is returned.  Otherwise, <n> bytes are
 copied, and a NULL pointer is returned. */
-void	*ft_memccpy (void *dst, const void *src, int c, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
 	unsigned char	*auxdst;
 	unsigned char	*auxsrc;

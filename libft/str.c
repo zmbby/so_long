@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   str.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/18 15:02:03 by zoentifi          #+#    #+#             */
+/*   Updated: 2025/02/18 15:02:06 by zoentifi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
 /* Returns how many chars are in <str> */
 size_t	ft_strlen(const char *str)
 {
-	size_t		count;
+	size_t	count;
 
 	if (!str)
 		return (0);
@@ -38,7 +50,7 @@ int	ft_wordcount(const char *str, char c)
 
 /* Copys <dstsize> - 1 chars from <src> to <dst>.
 Return the lenght of the string that tried to create. */
-size_t	ft_strlcpy (char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	unsigned int	i;
 
@@ -58,7 +70,7 @@ size_t	ft_strlcpy (char *dst, const char *src, size_t dstsize)
 }
 
 /* Adds <src> to the end of <dst>. <dst> is consider to have <dstsize> bytes */
-size_t	ft_strlcat (char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	dst_len;
 	size_t	dst_i;

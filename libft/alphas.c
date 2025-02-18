@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   alphas.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/18 15:04:00 by zoentifi          #+#    #+#             */
+/*   Updated: 2025/02/18 15:04:02 by zoentifi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /* Returns 1 if <c> is a letter. 0 if not. */
@@ -22,7 +34,7 @@ int	ft_isupperalpha(int c)
 
 /* Returns the UPPERCASE of a letter.
 And the same char if it isn't a lower case letter */
-int	ft_toupper (int c)
+int	ft_toupper(int c)
 {
 	if (ft_isalpha(c) && c >= 'a')
 		return (c - 32);
@@ -31,7 +43,7 @@ int	ft_toupper (int c)
 
 /* Returns the LOWERCASE of a letter.
 And the same char if it isn't an upper case letter */
-int	ft_tolower (int c)
+int	ft_tolower(int c)
 {
 	if (ft_isalpha(c) && c <= 'Z')
 		return (c + 32);

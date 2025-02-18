@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/18 15:18:20 by zoentifi          #+#    #+#             */
+/*   Updated: 2025/02/18 15:18:39 by zoentifi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	write_int(int i, int *count)
@@ -65,7 +77,7 @@ void	ft_print_hex_v2(unsigned int a, int *count)
 
 void	ft_print_hex_v3(unsigned int a, int *count)
 {
-	char *base_hex;
+	char	*base_hex;
 
 	base_hex = "0123456789ABCDEF";
 	if (a >= 16)

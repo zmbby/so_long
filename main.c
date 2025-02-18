@@ -1,24 +1,36 @@
-#include "so_long.h"
-#include "map/map.h"
-#include "game/game.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
+/*   Created: 2025/02/18 15:19:57 by zoentifi          #+#    #+#             */
+/*   Updated: 2025/02/18 15:19:57 by zoentifi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "game/game.h"
+#include "map/map.h"
+#include "so_long.h"
 //------------------16 line and 31 col is the limit dell machine
 //------------------33 lineand 61 col limit mac
-
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-    t_game game = {0};
-    if (!start(&game, ac, av))
-        return (0);
-    mlx_hook(game.win, KeyPress, KeyPressMask, input, (void *)&game);
-    mlx_loop_hook(game.mlx, update, (void *)&game);
-    // mlx_key_hook(game.win, input, (void *)&game);
-    mlx_loop(game.mlx);
-    return (0);
+	t_game (game) = {0};
+	if (!start(&game, ac, av))
+		return (0);
+	mlx_hook(game.win, KeyPress, KeyPressMask, input, (void *)&game);
+	mlx_loop_hook(game.mlx, update, (void *)&game);
+	mlx_loop(game.mlx);
+	return (0);
 }
 // int main()
 // {
-//     t_game game = {0}; 
+//     t_game game = {0};
 //     add_enemy(&game, FOLLOW_ENEM, NULL);
 //     add_enemy(&game, FOLLOW_ENEM, NULL);
 //     add_enemy(&game, HORIZONTAL_ENEM, NULL);

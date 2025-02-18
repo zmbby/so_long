@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/18 15:17:46 by zoentifi          #+#    #+#             */
+/*   Updated: 2025/02/18 15:18:14 by zoentifi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	init_format(const char *format)
@@ -19,7 +31,7 @@ void	ft_putchar(char c)
 
 void	write_decimale(int i, int *count)
 {
-	long nbr;
+	long	nbr;
 
 	nbr = i;
 	if (nbr < 0)

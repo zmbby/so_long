@@ -6,7 +6,7 @@
 /*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 19:15:12 by zoentifi          #+#    #+#             */
-/*   Updated: 2025/02/17 19:15:27 by zoentifi         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:35:20 by zoentifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ t_tiletype	define_tiletype(char definer)
 
 void	setup_tile(t_tile **tilemap, int x, int y)
 {
-	tilemap[y][x].og_type = tilemap[y][x].type;
 	tilemap[y][x].position.x = x * IMG_SIZE;
 	tilemap[y][x].position.y = y * IMG_SIZE;
 	if (y != 0)
@@ -79,31 +78,27 @@ void	set_gamevars(t_tile *tile, t_game *game, char c)
 
 t_tile	**generate_tilemap(char **map, t_game *game)
 {
-	t_tile **tilemap;
-	int x;
-	int y;
+	t_tile	**tilemap;
 
-	x = 0;
-	y = 0;
+	t_vector (pos) = {0};
 	tilemap = alloc_tilemap(map);
 	if (!tilemap)
 		return (null_error("malloc faild ! ps : alloc_tilemap() !"));
-	y = 0;
-	while (map[y])
+	while (map[pos.y])
 	{
-		x = 0;
-		while (map[y][x] != '\0')
+		pos.x = 0;
+		while (map[pos.y][pos.x] != '\0')
 		{
-			tilemap[y][x].type = define_tiletype(map[y][x]);
-			setup_tile(tilemap, x, y);
-			set_gamevars(&tilemap[y][x], game, map[y][x]);
-			x++;
+			tilemap[pos.y][pos.x].type = define_tiletype(map[pos.y][pos.x]);
+			setup_tile(tilemap, pos.x, pos.y);
+			set_gamevars(&tilemap[pos.y][pos.x], game, map[pos.y][pos.x]);
+			pos.x++;
 		}
-		tilemap[y][x].type = 0;
-		y++;
+		tilemap[pos.y][pos.x].type = 0;
+		pos.y++;
 	}
-	tilemap[y] = NULL;
-	game->win_size.x = x * IMG_SIZE;
-	game->win_size.y = y * IMG_SIZE;
+	tilemap[pos.y] = NULL;
+	game->win_size.x = pos.x * IMG_SIZE;
+	game->win_size.y = pos.y * IMG_SIZE;
 	return (tilemap);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   open_image.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/18 15:06:19 by zoentifi          #+#    #+#             */
+/*   Updated: 2025/02/18 15:06:26 by zoentifi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../so_long.h"
 #include "game.h"
 
@@ -35,9 +47,8 @@ static void	open_door_imgs(t_game *game)
 
 void	open_image(t_game *game)
 {
-	open_walls_up (game);
-	// end_game_imgs(game);
-	open_wallimgs_down (game);
+	open_walls_up(game);
+	open_wallimgs_down(game);
 	open_player_imgs(game);
 	open_collect_imgs(game);
 	open_enemy_imgs(game);

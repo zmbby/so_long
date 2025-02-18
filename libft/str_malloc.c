@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   str_malloc.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/18 15:01:13 by zoentifi          #+#    #+#             */
+/*   Updated: 2025/02/18 15:01:36 by zoentifi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /* Creates -with malloc- a copy of <str> */
@@ -34,7 +46,7 @@ char	*ft_substr(char const *src, unsigned int start, size_t len)
 		*output = 0;
 	}
 	else
-	{	
+	{
 		len++;
 		output = malloc(len);
 		if (output == NULL)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_end.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zm <zm@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/17 22:49:14 by zm                #+#    #+#             */
-/*   Updated: 2025/02/17 22:51:08 by zm               ###   ########.fr       */
+/*   Created: 2025/02/18 15:10:20 by zoentifi          #+#    #+#             */
+/*   Updated: 2025/02/18 15:12:35 by zoentifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,19 @@ void	remove_player(t_game *game)
 	game->player.tile = NULL;
 	end_game(game, 1);
 	end_program(game);
+}
+
+void	move_follower(t_game *game)
+{
+	t_enemy	*current;
+
+	if (game == NULL || game->enemy_list == NULL)
+		return ;
+	current = game->enemy_list;
+	while (current != NULL)
+	{
+		if (current->type == FOLLOW_ENEM)
+			follow_player(current, game);
+		current = current->next;
+	}
 }

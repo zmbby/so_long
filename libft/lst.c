@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lst.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/18 15:02:58 by zoentifi          #+#    #+#             */
+/*   Updated: 2025/02/18 15:03:00 by zoentifi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /* Creates -with malloc- a new element of the list
-with content = <con> and next = NULL */
+with	content = <con> and next = NULL */
 t_list	*ft_lstnew(void *con)
 {
 	t_list	*output;
@@ -17,20 +29,22 @@ t_list	*ft_lstnew(void *con)
 /* Adds <new> at the end of <lst> */
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-    if (!lst || !new)
-        	return;
-    if (!*lst)
-        *lst = new;
-    else
-    {
-        t_list *tmp = *lst;
-        while (tmp->next)
-            tmp = tmp->next;
-        tmp->next = new;
-    }
+	t_list	*tmp;
+
+	if (!lst || !new)
+		return ;
+	if (!*lst)
+		*lst = new;
+	else
+	{
+		tmp = *lst;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
+	}
 }
 
-/* Sets the element pointed by <new> as the 
+/* Sets the element pointed by <new> as the
 first element of the list pointed by <lst> */
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
