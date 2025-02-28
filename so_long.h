@@ -6,7 +6,7 @@
 /*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:18:56 by zoentifi          #+#    #+#             */
-/*   Updated: 2025/02/23 21:50:21 by zoentifi         ###   ########.fr       */
+/*   Updated: 2025/02/28 15:45:42 by zoentifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,15 @@
 # include "ft_printf/ft_printf.h"
 # include "get_next_line/get_next_line.h"
 # include "libft/libft.h"
-# include <mlx.h>
 # include <X11/X.h>
 # include <fcntl.h>
+# include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
 
 # define IMG_SIZE 64
 
 // ------------------ KEYS
-
-// #define ESC 65307
 
 enum					e_keycode
 {
@@ -72,7 +70,6 @@ typedef struct s_color
 typedef struct s_tile
 {
 	t_tiletype			type;
-	// t_tiletype			og_type;
 	t_vector			position;
 	struct s_tile		*up;
 	struct s_tile		*down;
@@ -116,7 +113,6 @@ typedef struct s_enemy
 {
 	t_enemytype			type;
 	int					dir;
-	// t_tile				*og_tile;
 	t_tile				*tile;
 	struct s_enemy		*next;
 }						t_enemy;
@@ -157,13 +153,6 @@ typedef struct s_check_path
 	t_vector			tmp;
 	int					valid;
 }						t_check_path;
-// typedef struct s_endgame_img
-// {
-//     void            *you_win_img;
-//     void            *game_over_img;
-//     t_vector        win_vec;
-//     t_vector        lose_vec;
-// }   t_endgame_img;
 
 typedef struct s_garbage
 {
@@ -178,7 +167,6 @@ typedef struct s_game
 	t_vector			win_size;
 	t_tile				**tilemap;
 	t_player			player;
-	// int					og_collects;
 	int					collects;
 	int					moves;
 	t_enemy				*enemy_list;
@@ -189,14 +177,13 @@ typedef struct s_game
 	void				*door_open_img;
 	void				*door_close_img;
 	t_effect			effect;
-	// void				*red_panel;
-	// void				*white_panel;
 	int					counter;
 	t_garbage			*garbage_head;
 	int					xmp_check;
 }						t_game;
 
 // functions
+
 int						error(char *msg);
 void					*null_error(char *message);
 void					print_warning(char *message);
