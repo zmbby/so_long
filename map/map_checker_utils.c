@@ -6,11 +6,12 @@
 /*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 14:55:22 by zoentifi          #+#    #+#             */
-/*   Updated: 2025/02/18 18:21:02 by zoentifi         ###   ########.fr       */
+/*   Updated: 2025/02/23 17:06:38 by zoentifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
+#include "../game/game.h"
 
 int	valid_char(char c)
 {
@@ -29,7 +30,7 @@ int	valid_uniquechar(char c, int *b_player)
 	return (1);
 }
 
-static int	is_full_wall_row(char *row)
+static int	is_full_wall_row(char *row, t_vector size)
 {
 	int	i;
 
@@ -40,6 +41,8 @@ static int	is_full_wall_row(char *row)
 			return (0);
 		i++;
 	}
+	if (i != size.x - 1)
+		return (0);
 	return (1);
 }
 
@@ -47,11 +50,14 @@ int	valid_border(char **map, t_vector size)
 {
 	int	y;
 
-	if (!is_full_wall_row(map[0]) || !is_full_wall_row(map[size.y - 1]))
+	if (!is_full_wall_row(map[0], size) || !is_full_wall_row(map[size.y - 1],
+			size))
 		return (0);
 	y = 1;
 	while (y < size.y - 1)
 	{
+		if (ft_strlen(map[y]) != (size_t)size.x)
+			return (0);
 		if (map[y][0] != '1' || map[y][size.x - 2] != '1')
 			return (0);
 		y++;

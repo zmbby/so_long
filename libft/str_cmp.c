@@ -6,7 +6,7 @@
 /*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:01:45 by zoentifi          #+#    #+#             */
-/*   Updated: 2025/02/18 15:01:53 by zoentifi         ###   ########.fr       */
+/*   Updated: 2025/02/19 14:23:06 by zoentifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	ft_strend_cmp(char *name, char *end)
 
 	name_len = ft_strlen(name);
 	ext_len = ft_strlen(end);
+	if (name_len < 4)
+		return (0);
 	if (name_len <= ext_len)
 		return (0);
 	name += name_len - ext_len;

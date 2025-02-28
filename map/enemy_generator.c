@@ -6,7 +6,7 @@
 /*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 14:57:32 by zoentifi          #+#    #+#             */
-/*   Updated: 2025/02/18 18:03:37 by zoentifi         ###   ########.fr       */
+/*   Updated: 2025/02/19 14:26:11 by zoentifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_enemy	*new_enemy(t_enemytype type, t_tile *tile)
 	enemy->type = type;
 	enemy->dir = 0;
 	enemy->tile = tile;
-	// enemy->og_tile = enemy->tile;
 	enemy->next = NULL;
 	return (enemy);
 }

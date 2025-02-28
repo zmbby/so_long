@@ -6,7 +6,7 @@
 /*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:18:56 by zoentifi          #+#    #+#             */
-/*   Updated: 2025/02/18 22:46:32 by zoentifi         ###   ########.fr       */
+/*   Updated: 2025/02/23 21:50:21 by zoentifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "ft_printf/ft_printf.h"
 # include "get_next_line/get_next_line.h"
 # include "libft/libft.h"
-# include "minilibx-linux/mlx.h"
+# include <mlx.h>
 # include <X11/X.h>
 # include <fcntl.h>
 # include <stdio.h>
@@ -156,7 +156,6 @@ typedef struct s_check_path
 	char				**map_copy;
 	t_vector			tmp;
 	int					valid;
-	int					coin;
 }						t_check_path;
 // typedef struct s_endgame_img
 // {
@@ -190,10 +189,11 @@ typedef struct s_game
 	void				*door_open_img;
 	void				*door_close_img;
 	t_effect			effect;
-	void				*red_panel;
-	void				*white_panel;
+	// void				*red_panel;
+	// void				*white_panel;
 	int					counter;
 	t_garbage			*garbage_head;
+	int					xmp_check;
 }						t_game;
 
 // functions

@@ -6,7 +6,7 @@
 /*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:10:20 by zoentifi          #+#    #+#             */
-/*   Updated: 2025/02/18 15:12:35 by zoentifi         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:25:08 by zoentifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	kill_player(t_game *game, t_vector pos)
 {
 	game->player.tile = NULL;
 	effect_anim(&game->effect, pos);
-	mlx_put_image_to_window(game->mlx, game->win, game->red_panel, 0, 0);
 	end_game(game, 0);
 	end_program(game);
 }

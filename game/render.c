@@ -6,7 +6,7 @@
 /*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:12:46 by zoentifi          #+#    #+#             */
-/*   Updated: 2025/02/18 17:10:29 by zoentifi         ###   ########.fr       */
+/*   Updated: 2025/02/23 21:45:20 by zoentifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ static void	draw_text(t_game game)
 	char	*str;
 
 	str = ft_itoa(game.moves);
+	if (!str)
+		return ;
 	if (game.collects >= 0)
 		mlx_string_put(game.mlx, game.win, game.win_size.x - IMG_SIZE / 2.3,
 			IMG_SIZE - IMG_SIZE / 1.5, -1, str);

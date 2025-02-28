@@ -6,7 +6,7 @@
 /*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:15:04 by zoentifi          #+#    #+#             */
-/*   Updated: 2025/02/18 17:55:17 by zoentifi         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:24:56 by zoentifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	pick_coin(t_game *game, t_tile *tile)
 void	move_to_exit(t_game *game, t_tile *tile)
 {
 	effect_anim(&game->effect, tile->position);
-	mlx_put_image_to_window(game->mlx, game->win, game->white_panel, 0, 0);
 	remove_player(game);
 	game->collects = -1;
 }
@@ -40,5 +39,4 @@ void	move_to_enemy(t_game *game, t_tile *tile)
 {
 	kill_player(game, tile->position);
 	effect_anim(&game->effect, tile->position);
-	mlx_put_image_to_window(game->mlx, game->win, game->red_panel, 0, 0);
 }

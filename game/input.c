@@ -6,7 +6,7 @@
 /*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:06:40 by zoentifi          #+#    #+#             */
-/*   Updated: 2025/02/18 17:55:32 by zoentifi         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:01:11 by zoentifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	move_to(t_game *game, t_tile *tile)
 		move_to_enemy(game, tile);
 		return (0);
 	}
-	else if (tile->type == WALL)
+	else if (tile->type == WALL || tile->type == EXIT)
 		return (0);
 	return (1);
 }

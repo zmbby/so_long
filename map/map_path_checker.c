@@ -37,25 +37,19 @@ static char	**copy_map(char **map, t_vector size)
 	return (map_copy);
 }
 
-static int	flood_fill(char **map, int x, int y, t_vector size)
+static void	flood_fill(char **map, int x, int y, t_vector size)
 {
-	static int	coin;
-
-	if (map[y][x] == 'C')
-	{
-		
-		++coin;
-	}
-	if (x < 0 || y < 0 || x >= size.x - 1 || y >= size.y - 1 || map[y][x] == '1'
-		|| map[y][x] == 'G')
-		return (coin);
+	if (map[y][x] == 'E')
+		map[y][x] = '1';
+	if (x < 0 || y < 0 || x >= size.x - 1 || y >= size.y || map[y][x] == '1'
+		|| map[y][x] == 'G' || map[y][x] == 'V' || map[y][x] == 'F'
+		|| map[y][x] == 'H')
+		return ;
 	map[y][x] = 'G';
 	flood_fill(map, x + 1, y, size);
 	flood_fill(map, x - 1, y, size);
 	flood_fill(map, x, y + 1, size);
 	flood_fill(map, x, y - 1, size);
-	// printf("--%d--\n", coin);
-	return (coin);
 }
 
 static t_vector	find_player(char **map)
@@ -79,20 +73,17 @@ static t_vector	find_player(char **map)
 	return (pos);
 }
 
-int	ft_ft(int valid, char **map_copy, t_vector tmp, int ft)
+int	ft_ft(int valid, char **map_copy, t_vector tmp)
 {
 	while (map_copy[tmp.y])
 		free(map_copy[tmp.y++]);
 	free(map_copy);
 	if (!valid)
 		return (error("Not all collectibles or exit are reachable"));
-	// printf("%d\n", ft);
-	if (!ft)
-		return (0);
 	return (1);
 }
 
-int	check_path(char **map, t_mapchecker *data)
+int	check_path(char **map)
 {
 	t_check_path	c;
 
@@ -100,13 +91,12 @@ int	check_path(char **map, t_mapchecker *data)
 	c.size.y = ft_chartable_linecount(map);
 	c.map_copy = copy_map(map, c.size);
 	if (!c.map_copy)
-		return (error("malloc failed !"));
+		return (error("Memory allocation failed"));
 	c.player_pos = find_player(c.map_copy);
 	if (c.player_pos.x == -1)
-		return (error("Player position not found !"));
-	int (coin) = flood_fill(c.map_copy, c.player_pos.x, c.player_pos.y, c.size);
-	int (ft) = ft_ft1(&c.valid, &c.tmp.y, data, coin);
-	printf("--%d--\n", coin);
+		return (error("Player position not found"));
+	flood_fill(c.map_copy, c.player_pos.x, c.player_pos.y, c.size);
+	ft_ft1(&c.valid, &c.tmp.y);
 	while (c.map_copy[c.tmp.y] && c.valid)
 	{
 		c.tmp.x = 0;
@@ -119,5 +109,5 @@ int	check_path(char **map, t_mapchecker *data)
 		c.tmp.y++;
 	}
 	c.tmp.y = 0;
-	return (ft_ft(c.valid, c.map_copy, c.tmp, ft));
+	return (ft_ft(c.valid, c.map_copy, c.tmp));
 }

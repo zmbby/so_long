@@ -6,7 +6,7 @@
 /*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 14:42:17 by zoentifi          #+#    #+#             */
-/*   Updated: 2025/02/18 16:16:38 by zoentifi         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:32:28 by zoentifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,25 +54,29 @@ static char	**alloc_columns(char *file)
 
 char	**read_map(char *file)
 {
-	char	**map;
-	char	*line;
-	int		fd;
-	int		i;
-
-	map = alloc_columns(file);
-	if (!map)
+	t_fff (c) = {0};
+	c.map = alloc_columns(file);
+	if (!c.map)
 		return (NULL);
-	fd = open(file, O_RDONLY);
-	i = 0;
+	c.fd = open(file, O_RDONLY);
+	c.i = 0;
+	c.check = 0;
 	while (1)
 	{
-		line = get_next_line(fd);
-		if (line == NULL)
+		c.line = get_next_line(c.fd);
+		if (c.line == NULL)
 			break ;
-		map[i] = line;
-		i++;
+		if (*c.line == '\n')
+			c.check = 1;
+		c.map[c.i] = c.line;
+		c.i++;
 	}
-	map[i] = NULL;
-	close(fd);
-	return (map);
+	c.map[c.i] = NULL;
+	close(c.fd);
+	if (c.check)
+	{
+		ft_free_chartable(c.map);
+		return (null_error("parsing map failed !"));
+	}
+	return (c.map);
 }

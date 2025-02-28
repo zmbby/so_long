@@ -6,7 +6,7 @@
 /*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 14:55:52 by zoentifi          #+#    #+#             */
-/*   Updated: 2025/02/18 22:52:58 by zoentifi         ###   ########.fr       */
+/*   Updated: 2025/02/27 16:33:15 by zoentifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ static int	check(char **map, t_mapchecker *data)
 	x = data->point.x;
 	y = data->point.y;
 	if (!valid_char(map[y][x]))
-		return (error("invalid map character"));
+		return (error("invalid map character !"));
 	if (!valid_uniquechar(map[y][x], &data->b_player))
 		return (error("must be only one player !"));
 	if (map[y][x] == 'E')
 		data->b_exit += 1;
 	if (map[y][x] == 'C')
-		data->b_collect += 1;
+		data->b_collect = 1;
 	return (1);
 }
 
@@ -54,7 +54,7 @@ int	valid_map(char **map)
 	while (map[data.point.y])
 	{
 		if (!valid_border(map, data.size))
-			return (error("map must be surrounded by walls !"));
+			return (error("map must be surrounded by walls and rectangular !"));
 		data.point.x = 0;
 		while (map[data.point.y][data.point.x])
 		{
@@ -66,9 +66,9 @@ int	valid_map(char **map)
 	}
 	if (!data.b_player || (!data.b_exit || data.b_exit > 1) || !data.b_collect)
 		valid = error("there must be one P ,E and at least on Coin !");
-	if (valid && !check_path(map, &data))
+	if (valid && !check_path(map))
 		valid = 0;
-	if (data.point.x > 31 || data.point.y > 16)
+	if (data.point.x > 61 || data.point.y > 33)
 		valid = error("kbira lmap asahbi dir chi hel !");
 	return (valid);
 }
@@ -79,16 +79,13 @@ int	valid_file(int ac, char *file)
 		return (error("need a map !"));
 	if (ac > 2)
 		return (error("only one map needed !"));
-	if (!ft_strend_cmp(file, "ber"))
-		return (error("a valid map name should end with ,ber !"));
+	if (!ft_strend_cmp(file, ".ber"))
+		return (error("a valid map name should end with .ber !"));
 	return (1);
 }
 
-int	ft_ft1(int *valid, int *y, t_mapchecker *data, int coin)
+void	ft_ft1(int *valid, int *y)
 {
 	*valid = 1;
 	*y = 0;
-	if (coin != data->b_collect)
-		return (0);
-	return (1);
 }

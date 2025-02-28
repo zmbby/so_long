@@ -25,10 +25,10 @@ norm:
 
 clean:
 	@echo $(CURSIVE)$(GRAY)"          - Removing libft object files"... $(NONE)
-	@rm -f $(OBJ)
+	@rm  $(OBJ)
 
-fclean: clean
+fclean:
 	@echo $(CURSIVE)$(GRAY)"          - Removing $(NAME)..." $(NONE)
-	@rm -f $(NAME)
+	@rm  $(NAME)
 
 re: fclean all

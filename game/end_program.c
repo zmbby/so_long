@@ -6,7 +6,7 @@
 /*   By: zoentifi <zoentifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:09:20 by zoentifi          #+#    #+#             */
-/*   Updated: 2025/02/18 15:12:30 by zoentifi         ###   ########.fr       */
+/*   Updated: 2025/02/27 16:26:59 by zoentifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	*load_xpm(t_game *game, char *path)
 			&game->img_size.y);
 	if (img)
 		add_to_garbage(game, img);
+	// else
+	// 	end_program(game);
 	return (img);
 }
 
