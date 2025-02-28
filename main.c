@@ -23,7 +23,6 @@ int	main(int ac, char **av)
 	t_game (game) = {0};
 	if (!start(&game, ac, av))
 		return (0);
-	// check_xpm();
 	mlx_hook(game.win, KeyPress, KeyPressMask, input, (void *)&game);
 	mlx_loop_hook(game.mlx, update, (void *)&game);
 	mlx_loop(game.mlx);
